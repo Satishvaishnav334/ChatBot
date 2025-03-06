@@ -43,16 +43,23 @@ const Chat2 = () => {
       <div className=" flex bg-white-700 flex-row justify-center">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF9AnFuMRqBPbJlXiAAEcIyEuDGaR7qtZ3Qw&s" alt="" className="h-14 mt-6 m-5"/>
         <div className="">
-          <input className="bg-white-700 h-12   bg-slate-200 rounded-md p-7 m-5  "
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)} // Update input state dynamically
-          placeholder="Type a message..."
-          disabled={loading}
-          />
-        <button onClick={handleSend} disabled={loading} className="bg-orange-400  m-5 text-xl ml-10  rounded-md pl-6 pr-6 p-4">
+       <input
+  className="bg-white-700 h-12 bg-slate-200 rounded-md p-7 m-5"
+  type="text"
+  value={input}
+  onChange={(e) => setInput(e.target.value)}
+  placeholder="Type a message..."
+  disabled={loading}
+  onKeyDown={(e) => {
+    if (e.key === "Enter") {
+      handleSend();
+    }
+  }}
+/>
+<button onClick={handleSend} disabled={loading} className="bg-orange-400  m-5 text-xl ml-10  rounded-md pl-6 pr-6 p-4">
           {loading ? "Loading..." : "send"}
         </button>
+
           </div>
       </div>
 
