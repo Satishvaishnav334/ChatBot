@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-// import Img from './assets/images.png';
 
 const Chat2 = () => {
   const [result, setResult] = useState("");
@@ -10,7 +9,7 @@ const Chat2 = () => {
   const fetchAIResponse = async () => {
     try {
       setLoading(true); // Indicate loading state
-      const genAI = new GoogleGenerativeAI("AIzaSyDBug7313N1Za5Dmo93m3-oP3k7nI1A58Q");
+      const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
       const prompt = input; // Use the current value of input
